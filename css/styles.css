@@ -1,0 +1,175 @@
+/* Estilos personalizados adicionais */
+
+body {
+  background-color: #250A2C;
+}
+
+#questionnaire {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #1f2937;
+}
+
+p {
+  color: #ffffff;
+}
+
+.separador {
+  border-bottom: 1px solid #481455;
+}
+
+.quest {
+  color: white;
+  background-color: #DC2E5D;
+  
+}
+
+.nav {
+  background-color: #481455;
+}
+
+button {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  border: 1px solid gray;
+}
+
+button:active {
+  transform: scale(1);
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.bg-blue-600:hover {
+  background-color: #2563eb;
+}
+
+#questionnaire div.mb-4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+#questionnaire p.font-medium {
+  margin-right: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.bg-green-500 {
+  background-color: #10b981;
+  color: white;
+}
+
+.bg-yellow-400 {
+  background-color: #facc15;
+  color: white;
+}
+
+.bg-yellow-500 {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.bg-orange-500 {
+  background-color: #f97316;
+  color: white;
+}
+
+.bg-red-500 {
+  background-color: #ef4444;
+  color: white;
+}
+
+button[data-value] {
+  width: 56px;
+  height: 40px;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+#submit {
+  min-width: 150px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.topic-title {
+  padding: 8px;
+  padding-left: 16px;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 4px;
+  background-color: #371A3E;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+  
+  .max-w-lg, .max-w-4xl, #questionnaire {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #questionnaire div.mb-4 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #questionnaire p.font-medium {
+    text-align: center;
+    margin: 0;
+  }
+
+  #questionnaire .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .button-group button {
+    width: 48px;
+  }
+
+  #legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #legend li {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .topic-title {
+    width: 100%;
+    text-align: center;
+  }
+}
