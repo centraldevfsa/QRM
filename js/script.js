@@ -378,9 +378,9 @@ function capturePatientData() {
 
   patientData.idade = document.getElementById("idade").value;
 
-  patientData.idade = document.getElementById("peso").value;
+  patientData.peso = document.getElementById("peso").value;
 
-  patientData.idade = document.getElementById("altura").value;
+  patientData.altura = document.getElementById("altura").value;
 
   patientData.data = document.getElementById("data").value;
 
