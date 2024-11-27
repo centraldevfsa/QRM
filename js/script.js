@@ -416,15 +416,19 @@ function showResultsPage() {
 
     </head>
 
-    <body class="bg-gray-100">
+    <body class="bg-[#250A2C]">
+  <nav class="bg-[#250A2C] bg-opacity-90 backdrop-blur-sm top-0 left-0 w-full z-50 flex justify-center h-24 md:h-32 separador md:mt-0 mt-2 mb-4">
+    <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" class="h-18 md:h-24 max-w-xs md:ml-6 md:mt-5">
+    <!-- <img src="https://lp.saudeavancada.com.br/aescolha/assets/img/logotipo-a-escolha.svg" class="h-24 max-w-xs md:mr-8"> -->
+  </nav>
+   <div class="text-center mt-24">
+   
+      <p class="text-xl text-center quest mx-auto rounded p-1 inline-block pl-4 pr-4">Questionário de</p>
+      <h1 class="text-5xl font-bold mb-8 mt-2 text-center mx-auto text-white">Rastreamento Metabólico</h1>
+      <p class="text-2xl text-center mx-auto rounded p-1 inline-block pl-4 pr-4">Confira seus resultados.</p>
+    </div>
 
-    <div class="max-w-4xl mx-auto p-6 mt-10">
-
-    <img src="" class="h-24">
-
-    <h1 class="text-5xl font-bold mb-8 text-center mx-auto"><span class="text-xl">Questionário de</span><br> Rastreamento <br>Metabólico</h1>
-
-        <div class="max-w-lg mx-auto mb-6">
+        <div class="max-w-5xl mx-auto mb-6 p-4">
 
           <p><strong>Nome:</strong> ${patientData.nome}</p>
 
@@ -438,7 +442,7 @@ function showResultsPage() {
 
         </div>
 
-        <div id="results" class="max-w-lg mx-auto space-y-8">
+        <div id="results" class="max-w-5xl mx-auto space-y-8">
 
   `);
 
@@ -448,9 +452,9 @@ function showResultsPage() {
 
     resultWindow.document.write(`
 
-      <div class="mb-6 p-4 bg-gray-100 rounded-md">
+      <div class="mb-6 p-4 rounded-md">
 
-        <h2 class="text-base font-semibold mb-4 topic-title">${topic} - Total: ${sectionSums[topic]}</h2>
+        <h2 class="text-base text-white font-semibold mb-4 topic-title">${topic} - Total: ${sectionSums[topic]}</h2>
 
     `);
 
