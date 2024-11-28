@@ -390,135 +390,139 @@ function capturePatientData() {
 
 // Exibir a página de resultados
 
+function calculateResults() {
+  const sectionSums = {};
+  let totalSum = 0;
+
+  Object.keys(topics).forEach(topic => {
+    const topicScores = topics[topic].map((_, index) =>
+      responses[topic] && responses[topic][`${topic}-${index}`] !== undefined
+        ? responses[topic][`${topic}-${index}`]
+        : 0
+    );
+    const sectionSum = topicScores.reduce((sum, score) => sum + score, 0);
+    sectionSums[topic] = sectionSum;
+    totalSum += sectionSum;
+  });
+
+  return { sectionSums, totalSum };
+}
+
 function showResultsPage() {
-
   capturePatientData();
-
   const { sectionSums, totalSum } = calculateResults();
 
   const resultWindow = window.open("", "_blank");
-
   resultWindow.document.write(`
-
     <html lang="pt-BR">
-
     <head>
-
       <meta charset="UTF-8">
-
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
       <title>Resultados do Questionário Metabólico</title>
-
       <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
       <link rel="stylesheet" href="css/styles.css">
-
     </head>
-
     <body class="bg-[#250A2C]">
   <nav class="bg-[#250A2C] bg-opacity-90 backdrop-blur-sm top-0 left-0 w-full z-50 flex justify-center h-24 md:h-32 separador md:mt-0 mt-2 mb-4">
     <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" class="h-18 md:h-24 max-w-xs md:ml-6 md:mt-5">
-    <!-- <img src="https://lp.saudeavancada.com.br/aescolha/assets/img/logotipo-a-escolha.svg" class="h-24 max-w-xs md:mr-8"> -->
   </nav>
    <div class="text-center mt-24">
-   
       <p class="text-xl text-center quest mx-auto rounded p-1 inline-block pl-4 pr-4">Questionário de</p>
       <h1 class="text-5xl font-bold mb-8 mt-2 text-center mx-auto text-white">Rastreamento Metabólico</h1>
       <p class="text-2xl text-center mx-auto rounded p-1 inline-block pl-4 pr-4">Confira seus resultados.</p>
     </div>
+    <div class="max-w-5xl mx-auto mb-6 p-4">
+      <p><strong>Nome:</strong> ${patientData.nome}</p>
+      <p><strong>Idade:</strong> ${patientData.idade}</p>
+      <p><strong>Peso:</strong> ${patientData.peso}</p>
+      <p><strong>Altura:</strong> ${patientData.altura}</p>
+      <p><strong>Data:</strong> ${patientData.data}</p>
+    </div>
 
-        <div class="max-w-5xl mx-auto mb-6 p-4">
 
-          <p><strong>Nome:</strong> ${patientData.nome}</p>
-
-          <p><strong>Idade:</strong> ${patientData.idade}</p>
-
-          <p><strong>Peso:</strong> ${patientData.peso}</p>
-
-          <p><strong>Altura:</strong> ${patientData.altura}</p>
-
-          <p><strong>Data:</strong> ${patientData.data}</p>
-
-        </div>
-
-        <div id="results" class="max-w-5xl mx-auto space-y-8">
-
+    <div id="results" class="max-w-5xl mx-auto space-y-8">
   `);
-
-
 
   Object.keys(topics).forEach(topic => {
+    const sectionSum = sectionSums[topic];
+    const topicMessage = sectionSum > 10 ? " - ATENÇÃO! Indicativo de hipersensibilidade" : "";
 
     resultWindow.document.write(`
-
       <div class="mb-6 p-4 rounded-md">
-
-        <h2 class="text-base text-white font-semibold mb-4 topic-title">${topic} - Total: ${sectionSums[topic]}</h2>
-
+        <h2 class="text-base text-white font-semibold mb-4 topic-title">
+          ${topic} - Total: ${sectionSum}<span class="text-yellow-500">${topicMessage}</span>
+        </h2>
     `);
 
-
-
     topics[topic].forEach((question, index) => {
-
-      const score = responses[topic] && responses[topic][`${topic}-${index}`] !== undefined ? responses[topic][`${topic}-${index}`] : "Sem resposta";
-
+      const score =
+        responses[topic] && responses[topic][`${topic}-${index}`] !== undefined
+          ? responses[topic][`${topic}-${index}`]
+          : "Sem resposta";
       const colorClass = getColorClass(score);
 
-
-
       resultWindow.document.write(`
-
         <div class="flex justify-between items-center mb-2">
-
           <p class="flex-1">${question}</p>
-
           <span class="px-3 py-1 rounded-md ${colorClass}">${score}</span>
-
         </div>
-
       `);
-
     });
 
-
-
     resultWindow.document.write(`</div>`);
-
   });
 
-
+  const totalMessage =
+    totalSum < 20
+      ? "<20 pontos: pessoas mais saudáveis, com menor chance de terem hipersensibilidades."
+      : totalSum >= 30 && totalSum < 40
+      ? ">30 pontos: Indicativo de existência de hipersensibilidades."
+      : totalSum >= 40 && totalSum <= 100
+      ? ">40 pontos: Absoluta certeza da existência de hipersensibilidade"
+      : " >100 pontos: Pessoas com saúde muito ruim - alta dificuldade para executar tarefas diárias, pode estar associado à presença de outras doenças crônicas e degenerativas.";
 
   resultWindow.document.write(`
-
         </div>
-
         <div class="text-center mt-8">
-
-          <h3 class="text-xl font-bold">Soma Total: ${totalSum}</h3>
-
+          <h3 class="text-2xl font-bold text-white">TOTAL GERAL: ${totalSum}</h3>
+          <p class="max-w-lg text-lg font-medium text-white border p-4 mt-8 inline-block">Resultado: ${totalMessage}</p>
         </div>
-
-        <div class="flex justify-center mt-6">
-
-          <button onclick="window.print()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Gerar PDF</button>
-
+        <div class="flex justify-center mt-10 mb-16">
+          <button onclick="window.print()" class=" w-full md:w-1/3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Gerar relatório em PDF</button>
         </div>
-
       </div>
+       
+      <footer class="footer text-white py-6">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logotipo da FSA -->
+      <div class="flex items-center">
+        <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" alt="Logotipo FSA" class="h-16">
+      </div>
+  
+    <!-- Texto de termos de uso -->
+    <div class="text-sm text-center">
+      <p class="mx-auto">
+        2024 © FACULDADE DE SAÚDE AVANÇADA – Todos os direitos reservados.
+        CNPJ 32.820.232/0001-82 – Porto Alegre – RS
+      </p>
+    </div>
 
+    <!-- Texto de termos de uso -->
+      <div class="text-sm text-right">
+        <a href="https://lp.saudeavancada.com.br/termosdeuso" class="hover:underline">
+        Termos de Uso
+        </a>
+      </div>
+    </div>
+  </footer>
     </body>
-
     </html>
-
   `);
 
-
-
   resultWindow.document.close();
-
 }
+
+
 
 
 

@@ -18,7 +18,7 @@
 
 <body class="text-white">
   <nav class="bg-[#250A2C] bg-opacity-90 backdrop-blur-sm top-0 left-0 w-full z-50 flex justify-center h-24 md:h-32 separador md:mt-0 mt-2 mb-4">
-    <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" class="h-18 md:h-24 max-w-xs md:ml-6 md:mt-5">
+    <img src="https://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" class="h-18 md:h-24 max-w-xs md:ml-6 md:mt-5">
     <!-- <img src="https://lp.saudeavancada.com.br/aescolha/assets/img/logotipo-a-escolha.svg" class="h-24 max-w-xs md:mr-8"> -->
   </nav>
 
@@ -26,32 +26,31 @@
     <div class="text-center">
       <p class="text-xl text-center quest mx-auto rounded p-1 inline-block pl-4 pr-4">Questionário de</p>
       <h1 class="text-5xl font-bold mb-8 mt-2 text-center mx-auto text-white">Rastreamento Metabólico</h1>
-      <p class="mb-16 mt-12 text-center max-w-2xl mx-auto leading-relaxed">O Questionário de Rastreamento Metabólico auxilia na detecção de sinais e sintomas associados à hipersensibilidades alimentares e/ou ambientais. Assim, sempre que houver 10 ou mais pontos em uma seção do QRM, é um indicativo 
-      da existência de hipersensibilidades alimentares e/ou ambientais.</p>
+      <p class="mb-16 mt-8 text-center max-w-2xl mx-auto leading-relaxed">O Questionário de Rastreamento Metabólico auxilia na detecção de sinais e sintomas associados à hipersensibilidades alimentares e/ou ambientais.</p>
     </div>
     
     <div class="mx-auto mb-16">
       <label class="block text-gray-700 font-bold mb-2" for="nome"></label>
-      <input type="text" id="nome" class="w-full p-2 border rounded-md mb-4 text-gray-900" placeholder="Nome do paciente" required>
+      <input type="text" id="nome" class="w-full p-2 border rounded-md mb-2 text-gray-900" placeholder="Nome do paciente" required>
     
       <label class="block text-gray-700 font-bold mb-2" for="idade"></label>
-      <input type="number" id="idade" class="w-full p-2 border rounded-md mb-4 text-gray-900" placeholder="Digite a idade" required>
+      <input type="number" id="idade" class="w-full p-2 border rounded-md mb-2 text-gray-900" placeholder="Digite a idade" required>
     
       <!-- Div flex para organizar os inputs em linha no desktop e empilhados no mobile -->
       <div class="flex flex-col md:flex-row md:space-x-4">
         <div class="w-full md:w-1/3">
           <label class="block text-gray-700 font-bold mb-2" for="peso"></label>
-          <input type="number" id="peso" class="w-full p-2 border rounded-md mb-4 text-gray-900" placeholder="Digite o peso" required>
+          <input type="number" id="peso" class="w-full p-2 border rounded-md mb-2 text-gray-900" placeholder="Digite o peso" required>
         </div>
     
         <div class="w-full md:w-1/3">
           <label class="block text-gray-700 font-bold mb-2" for="altura"></label>
-          <input type="number" id="altura" class="w-full p-2 border rounded-md mb-4 text-gray-900" placeholder="Digite a altura" required>
+          <input type="number" id="altura" class="w-full p-2 border rounded-md mb-2 text-gray-900" placeholder="Digite a altura" required>
         </div>
     
         <div class="w-full md:w-1/3">
           <label class="block text-gray-700 font-bold mb-2" for="data"></label>
-          <input type="date" id="data" class="w-full p-2 border rounded-md mb-4 text-gray-800" required>
+          <input type="date" id="data" class="w-full p-2 border rounded-md mb-4 text-gray-800" placeholder="Data de preenchimento" required>
         </div>
       </div>
     </div>
@@ -71,10 +70,35 @@
       <!-- Estrutura dos tópicos com perguntas -->
     </div>
 
-    <div class="flex justify-center mt-2 mb-16">
+    <div class="flex justify-center mt-2 mb-12">
       <button id="showResults" class="w-full md:w-1/2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-12">Finalizar e ver os resultados</button>
     </div>
   </div>
+
+  <footer class="footer text-white py-6">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logotipo da FSA -->
+      <div class="flex items-center">
+        <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" alt="Logotipo FSA" class="h-16">
+      </div>
+  
+    <!-- Texto de termos de uso -->
+    <div class="text-sm text-center">
+      <p class="mx-auto">
+        2024 © FACULDADE DE SAÚDE AVANÇADA – Todos os direitos reservados.
+        CNPJ 32.820.232/0001-82 – Porto Alegre – RS
+      </p>
+    </div>
+
+    <!-- Texto de termos de uso -->
+      <div class="text-sm text-right">
+        <a href="https://lp.saudeavancada.com.br/termosdeuso" class="hover:underline">
+        Termos de Uso
+        </a>
+      </div>
+    </div>
+  </footer>
+  
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
