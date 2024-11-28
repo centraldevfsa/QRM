@@ -421,9 +421,20 @@ function showResultsPage() {
       <title>Resultados do Questionário Metabólico</title>
       <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/styles.css">
+      <style>
+  @media print {
+    body {
+      color: black !important;
+    }
+    * {
+      color: black !important;
+    }
+  }
+ 
+</style>
     </head>
     <body class="bg-[#250A2C]">
-  <nav class="bg-[#250A2C] bg-opacity-90 backdrop-blur-sm top-0 left-0 w-full z-50 flex justify-center h-24 md:h-32 separador md:mt-0 mt-2 mb-4">
+  <nav class="no-print bg-[#250A2C] top-0 left-0 w-full z-50 flex justify-center h-24 md:h-32 separador md:mt-0 mt-2 mb-4">
     <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" class="h-18 md:h-24 max-w-xs md:ml-6 md:mt-5">
   </nav>
    <div class="text-center mt-24">
@@ -445,7 +456,7 @@ function showResultsPage() {
 
   Object.keys(topics).forEach(topic => {
     const sectionSum = sectionSums[topic];
-    const topicMessage = sectionSum > 10 ? " - ATENÇÃO! Indicativo de hipersensibilidade" : "";
+    const topicMessage = sectionSum > 10 ? " | Indicativo de hipersensibilidade! | " : "";
 
     resultWindow.document.write(`
       <div class="mb-6 p-4 rounded-md">
@@ -463,7 +474,7 @@ function showResultsPage() {
 
       resultWindow.document.write(`
         <div class="flex justify-between items-center mb-2">
-          <p class="flex-1">${question}</p>
+          <p class="question flex-1">${question}</p>
           <span class="px-3 py-1 rounded-md ${colorClass}">${score}</span>
         </div>
       `);
@@ -487,8 +498,8 @@ function showResultsPage() {
           <h3 class="text-2xl font-bold text-white">TOTAL GERAL: ${totalSum}</h3>
           <p class="max-w-lg text-lg font-medium text-white border p-4 mt-8 inline-block">Resultado: ${totalMessage}</p>
         </div>
-        <div class="flex justify-center mt-10 mb-16">
-          <button onclick="window.print()" class=" w-full md:w-1/3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Gerar relatório em PDF</button>
+        <div class="no-print flex justify-center mt-10 mb-16">
+          <button onclick="window.print()" class="no-print w-full md:w-1/3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Gerar relatório em PDF</button>
         </div>
       </div>
        
