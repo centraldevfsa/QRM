@@ -494,22 +494,22 @@ function showResultsPage() {
 
   resultWindow.document.write(`
         </div>
-        <div class="text-center mt-8">
+        <div class="text-center mt-8 ml-4 mr-4">
           <h3 class="text-2xl font-bold text-white">TOTAL GERAL: ${totalSum}</h3>
           <p class="max-w-lg text-lg font-medium text-white border p-4 mt-8 inline-block">Resultado: ${totalMessage}</p>
         </div>
-        <div class="no-print flex justify-center mt-10 mb-16">
+        <div class="no-print flex justify-center mt-10 mb-16 ml-4 mr-4">
           <button onclick="window.print()" class="no-print w-full md:w-1/3 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Gerar relatório em PDF</button>
         </div>
       </div>
        
-      <footer class="footer text-white py-6">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-      <!-- Logotipo da FSA -->
-      <div class="flex items-center">
-        <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" alt="Logotipo FSA" class="h-16">
-      </div>
-  
+<footer class="no-print footer text-white py-6">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <!-- Logotipo da FSA -->
+    <div class="flex items-center">
+      <img src="http://lp.saudeavancada.com.br/fsaneo/img/logo-fsa-horizontal.svg" alt="Logotipo FSA" class="h-16">
+    </div>
+
     <!-- Texto de termos de uso -->
     <div class="text-sm text-center">
       <p class="mx-auto">
@@ -518,14 +518,15 @@ function showResultsPage() {
       </p>
     </div>
 
-    <!-- Texto de termos de uso -->
-      <div class="text-sm text-right">
-        <a href="https://lp.saudeavancada.com.br/termosdeuso" class="hover:underline">
+    <!-- Link para Termos de Uso -->
+    <div class="text-sm text-center md:text-right">
+      <a href="https://lp.saudeavancada.com.br/termosdeuso" class="hover:underline">
         Termos de Uso
-        </a>
-      </div>
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
+
     </body>
     </html>
   `);
