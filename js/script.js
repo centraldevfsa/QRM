@@ -485,7 +485,7 @@ function showResultsPage() {
 
   const totalMessage =
     totalSum < 20
-    ? "<20 pontos: Indicativo de uma saúde equilibrada, com menor chance de hipersensibilidades."
+    ? "<20 pontos: Indicativo de uma saúde equilibrada, com menor chance de hipersensibilidade."
     : totalSum >= 30 && totalSum < 40
     ? ">30 pontos: Pode haver sinais de hipersensibilidade. Recomendamos atenção aos cuidados com a saúde."
     : totalSum >= 40 && totalSum <= 100
