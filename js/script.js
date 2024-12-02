@@ -485,12 +485,12 @@ function showResultsPage() {
 
   const totalMessage =
     totalSum < 20
-      ? "<20 pontos: pessoas mais saudáveis, com menor chance de terem hipersensibilidades."
-      : totalSum >= 30 && totalSum < 40
-      ? ">30 pontos: Indicativo de existência de hipersensibilidades."
-      : totalSum >= 40 && totalSum <= 100
-      ? ">40 pontos: Absoluta certeza da existência de hipersensibilidade"
-      : " >100 pontos: Pessoas com saúde muito ruim - alta dificuldade para executar tarefas diárias, pode estar associado à presença de outras doenças crônicas e degenerativas.";
+    ? "<20 pontos: Indicativo de uma saúde equilibrada, com menor chance de hipersensibilidades."
+    : totalSum >= 30 && totalSum < 40
+    ? ">30 pontos: Pode haver sinais de hipersensibilidade. Recomendamos atenção aos cuidados com a saúde."
+    : totalSum >= 40 && totalSum <= 100
+    ? ">40 pontos: Indicativo importante de hipersensibilidade. Considerar buscar apoio profissional."
+    : ">100 pontos: Sinal de saúde fragilizada, com impacto na qualidade de vida. Avaliações mais detalhadas podem ser úteis para melhorar o bem-estar.";
 
   resultWindow.document.write(`
         </div>
